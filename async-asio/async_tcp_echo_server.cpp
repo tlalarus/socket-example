@@ -3,8 +3,32 @@
 #include <memory>
 #include <utility>
 #include <boost/asio.hpp>
+#include <ctime>
+#include <random>
 
 using boost::asio::ip::tcp;
+
+// A reference-counted non-modifiable buffer class.
+class shared_const_buffer{
+public:
+	//Construct from a std::string.
+	explicit shared_const_buffer(const std::string& data)
+	: data_(new std::vector<char>(data.begin(), data.end())),
+	buffer_(boost::asio::buffer(*data_)){
+
+	}
+
+	// Implement the ConstBufferSequence requirements.
+	typedef boost::asio::const_buffer value_type;
+	typedef const boost::asio::const_buffer* const_iterator;
+	const boost::asio::const_buffer* begin() const { return &buffer_; }
+	const boost::asio::const_buffer* end() const { return &buffer_ + 1; }
+
+private:
+	std::shared_ptr<std::vector<char>> data_;
+	boost::asio::const_buffer buffer_;
+
+};
 
 // enable_shared_from_this 를 상속 받음으로써
 // 공통된 raw pointer를 share 할 수 있게 해준다.(하나의 레퍼런스카운트로 관리됨.
@@ -27,13 +51,24 @@ private:
 														[this, self](boost::system::error_code ec, std::size_t length)
 														{
 															if(!ec){
+																std::cout << "request : " << data_ << std::endl;
 																do_write(length);
 															}
 														});
 	}
 	void do_write(std::size_t length){
+		std::mt19937_64 rng1(1029);
+		std::uniform_int_distribution<int64_t> dist1(0,100);
+
+		std::cout << "dist1 Min : " << dist1.min() << std::endl;
+		std::cout << "dist1 Max : " << dist1.max() << std::endl;
+		int response = dist1(rng1);
+		std::cout << "response : " << response << std::endl;
+
+		shared_const_buffer buffer(std::to_string(response));
+
 		auto self(shared_from_this());
-		boost::asio::async_write(socket_, boost::asio::buffer(data_, length),
+		boost::asio::async_write(socket_, buffer,
 														 [this, self](boost::system::error_code ec, std::size_t /*length*/)
 														 {
 																if(!ec){
@@ -72,6 +107,7 @@ private:
 int main(int argc, char* argv[]){
 	try{
 		if(argc != 2){
+			// portnum < 1024 requires root
 			std::cerr << "Usage: async_tcp_echo_server <port>\n";
 			return 1;
 		}

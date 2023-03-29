@@ -8,5 +8,7 @@ set(BIN_NAME_CLIENT "${BIN_NAME}-client")
 
 #add_dependencies(${BIN_NAME_SERVER} ${PROJECT_NAME})
 #add_executable(${BIN_NAME} server/main.cpp)
+include_directories(${Boost_INCLUDE_DIRS})
 add_executable(${BIN_NAME_CLIENT} client/main.cpp)
+target_link_libraries(${BIN_NAME_CLIENT} ${Boost_LIBRARIES})
 

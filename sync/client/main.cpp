@@ -6,6 +6,13 @@
 #include <cstring>
 #include <iostream>
 #include <boost/asio.hpp>
+#include <boost/serialization/serialization.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/iostreams/device/array.hpp>
+#include <boost/iostreams/stream.hpp>
+#include <boost/serialization/map.hpp>
+
+#include "../../adapter/protocol.h"
 
 using boost::asio::ip::tcp;
 
@@ -27,12 +34,22 @@ int main(int argc, char* argv[]){
 		tcp::resolver resolver(io_context);
 		boost::asio::connect(s, resolver.resolve(argv[1], argv[2]));
 
-		std::cout << "Enter message: ";
-		char request[max_length];
-		std::cin.getline(request, max_length);
-		size_t request_length = std::strlen(request);
+		std::cout << "Enter to request: ";
+		char request[max_length*5];
+//		std::cin.getline(request, max_length);
 
-		boost::asio::write(s, boost::asio::buffer(request, request_length));
+		// serialize
+		boost::iostreams::stream<boost::iostreams::array_sink> os(request);
+		boost::archive::binary_oarchive oa(os);
+		std::map<int, std::string> req;
+		req.insert({1, "ready"});
+		oa << req;
+
+		size_t request_length = std::strlen(request);
+		std::cout << "request data size: " << request_length << std::endl;
+
+		boost::asio::write(s, boost::asio::buffer(request, (max_length*5)));
+//		boost::asio::write(s, buf);
 
 		char reply[max_length];
 		size_t reply_length = boost::asio::read(s, boost::asio::buffer(reply, request_length));

@@ -5,7 +5,7 @@
 		<Option title="socket"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Boost-1.71.0\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_headers-1.71.0\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_filesystem-1.71.0\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_system-1.71.0\;CMake Files\sync\;CMake Files\async-asio\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Boost-1.71.0\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_headers-1.71.0\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_filesystem-1.71.0\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_system-1.71.0\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_serialization-1.71.0\;CMake Files\sync\;CMake Files\async-asio\;CMake Files\adapter\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug"/>
@@ -44,6 +44,10 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-DBOOST_FILESYSTEM_DYN_LINK"/>
+					<Add option="-DBOOST_ALL_NO_LIB"/>
+					<Add option="-DBOOST_SYSTEM_DYN_LINK"/>
+					<Add option="-DBOOST_SERIALIZATION_DYN_LINK"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -66,6 +70,10 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-DBOOST_FILESYSTEM_DYN_LINK"/>
+					<Add option="-DBOOST_ALL_NO_LIB"/>
+					<Add option="-DBOOST_SYSTEM_DYN_LINK"/>
+					<Add option="-DBOOST_SERIALIZATION_DYN_LINK"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -125,7 +133,80 @@
 					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/async-asio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="socket-adapter">
+				<Option output="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/x86_64/bin/socket-adapter" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/x86_64/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBOOST_FILESYSTEM_DYN_LINK"/>
+					<Add option="-DBOOST_ALL_NO_LIB"/>
+					<Add option="-DBOOST_SYSTEM_DYN_LINK"/>
+					<Add option="-DBOOST_SERIALIZATION_DYN_LINK"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/adapter/Makefile&quot;  VERBOSE=1 socket-adapter"/>
+					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/adapter/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/adapter/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/adapter/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="socket-adapter/fast">
+				<Option output="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/x86_64/bin/socket-adapter" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/x86_64/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBOOST_FILESYSTEM_DYN_LINK"/>
+					<Add option="-DBOOST_ALL_NO_LIB"/>
+					<Add option="-DBOOST_SYSTEM_DYN_LINK"/>
+					<Add option="-DBOOST_SERIALIZATION_DYN_LINK"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/adapter/Makefile&quot;  VERBOSE=1 socket-adapter/fast"/>
+					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/adapter/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/adapter/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/adapter/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 		</Build>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/adapter/adapter.cpp">
+			<Option target="socket-adapter"/>
+		</Unit>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/adapter/adapter.hpp">
+			<Option target="socket-adapter"/>
+		</Unit>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/adapter/main.cpp">
+			<Option target="socket-adapter"/>
+		</Unit>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/adapter/model.cpp">
+			<Option target="socket-adapter"/>
+		</Unit>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/adapter/model.hpp">
+			<Option target="socket-adapter"/>
+		</Unit>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/adapter/model_api.cpp">
+			<Option target="socket-adapter"/>
+		</Unit>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/adapter/model_api.h">
+			<Option target="socket-adapter"/>
+		</Unit>
 		<Unit filename="/home/minkyung/CLionProjects/socket-example/async-asio/async_tcp_echo_server.cpp">
 			<Option target="socket-async-server"/>
 		</Unit>
@@ -174,11 +255,26 @@
 		<Unit filename="/home/minkyung/CLionProjects/socket-example/../../../../usr/lib/x86_64-linux-gnu/cmake/boost_system-1.71.0/libboost_system-variant-static.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_system-1.71.0\"/>
 		</Unit>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/../../../../usr/lib/x86_64-linux-gnu/cmake/boost_serialization-1.71.0/boost_serialization-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_serialization-1.71.0\"/>
+		</Unit>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/../../../../usr/lib/x86_64-linux-gnu/cmake/boost_serialization-1.71.0/boost_serialization-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_serialization-1.71.0\"/>
+		</Unit>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/../../../../usr/lib/x86_64-linux-gnu/cmake/boost_serialization-1.71.0/libboost_serialization-variant-shared.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_serialization-1.71.0\"/>
+		</Unit>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/../../../../usr/lib/x86_64-linux-gnu/cmake/boost_serialization-1.71.0/libboost_serialization-variant-static.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_serialization-1.71.0\"/>
+		</Unit>
 		<Unit filename="/home/minkyung/CLionProjects/socket-example/sync/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\sync\"/>
 		</Unit>
 		<Unit filename="/home/minkyung/CLionProjects/socket-example/async-asio/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\async-asio\"/>
+		</Unit>
+		<Unit filename="/home/minkyung/CLionProjects/socket-example/adapter/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\adapter\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
