@@ -10,7 +10,6 @@ Engine* Engine::instance = nullptr;
 NotiCallbackFn Message::func_response = nullptr;
 
 void Model::notifyError(Engine &engine_) {
-	string msg = "error occured";
 	sResponseTest res_msg;
 	res_msg.code = static_cast<int32_t>(eResponseType::RES_ERROR);
 	res_msg.val1 = false;
@@ -30,6 +29,7 @@ void Engine::proc(int action){
 	} else if(action == 2){
 		m_model->do_something2(*this);
 	} else{
+		cout << "error in Engine::proc()" << endl;
 		m_model->notifyError(*this);
 	}
 }

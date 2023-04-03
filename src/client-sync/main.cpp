@@ -36,23 +36,31 @@ int main(int argc, char* argv[]){
 		tcp::resolver resolver(io_context);
 		boost::asio::connect(s, resolver.resolve(argv[1], argv[2]));
 
-		std::cout << "Enter to request: ";
+		while(true){
 
-		// serialize
-		char request[max_length];
-		request[0] = 3;
+			std::cout << "Select request type" << std::endl;
+			std::cout << " 0:REQ_IS_STANDBY \n 1:REQ_IS_READY \n 2:REQ_IS_TRIGGERED \n 3:REQ_RESULT)" << std::endl;
+			std::cout << "Enter req code:";
 
-		size_t request_length = std::strlen(request);
-		std::cout << "request data size: " << request_length << std::endl;
+			int req_code = -1;
+			std::cin >> req_code;
 
-		boost::asio::write(s, boost::asio::buffer(request, max_length));
-//		boost::asio::write(s, buf);
+			// Serialize
+			char request[max_length];
+			request[0] = req_code;
+			size_t request_length = std::strlen(request);
+			std::cout << "Request is: << " << req_code << ", request size is " << request_length << std::endl;
 
-		char reply[max_length];
-		size_t reply_length = boost::asio::read(s, boost::asio::buffer(reply, request_length));
-		std::cout << "Reply is: ";
-		std::cout.write(reply, reply_length);
-		std::cout << "\n";
+			boost::asio::write(s, boost::asio::buffer(request, max_length));
+
+			// Deserialize
+			char reply[max_length];
+			size_t reply_length = boost::asio::read(s, boost::asio::buffer(reply, request_length));
+			std::cout << "Reply is: ";
+			std::cout.write(reply, reply_length);
+			std::cout << "\n\n";
+		}
+
 	}
 	catch(std::exception& e){
 		std::cerr << "Exception: " << e.what() << "\n";

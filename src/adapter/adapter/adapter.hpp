@@ -20,7 +20,7 @@ public:
 
 	// server(engine) -> client(adapter):
 	// engine에서 보내준 response 종류에 따라 처리함.
-	bool sendResponse();
+	bool sendResponse(sResponseTest resonse);
 
 	// client(external) -> server(adapter):
 	// server 멤버변수에서 request가 발생하면 콜백으로 불려진다.

@@ -2,187 +2,19 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="socket"/>
+		<Option title="test-simple"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;CMake Files\cmake-build-debug\;CMake Files\cmake-build-debug\_deps\;CMake Files\cmake-build-debug\_deps\googletest-src\;CMake Files\cmake-build-debug\_deps\googletest-src\googlemock\;CMake Files\cmake-build-debug\_deps\googletest-src\googlemock\cmake\;CMake Files\cmake-build-debug\_deps\googletest-src\googletest\;CMake Files\cmake-build-debug\_deps\googletest-src\googletest\cmake\;CMake Files\src\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Boost-1.71.0\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_headers-1.71.0\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_filesystem-1.71.0\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_system-1.71.0\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_serialization-1.71.0\;CMake Files\test\;CMake Files\test\simple\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug"/>
+				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="rebuild_cache">
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="list_install_components">
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="install">
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="install/local">
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="install/strip">
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="adapter-cli">
-				<Option output="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/adapter-cli" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DBOOST_FILESYSTEM_DYN_LINK"/>
-					<Add option="-DBOOST_ALL_NO_LIB"/>
-					<Add option="-DBOOST_SYSTEM_DYN_LINK"/>
-					<Add option="-DBOOST_SERIALIZATION_DYN_LINK"/>
-					<Add directory="/home/minkyung/CLionProjects/socket-example/include"/>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 adapter-cli"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="adapter-cli/fast">
-				<Option output="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/adapter-cli" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DBOOST_FILESYSTEM_DYN_LINK"/>
-					<Add option="-DBOOST_ALL_NO_LIB"/>
-					<Add option="-DBOOST_SYSTEM_DYN_LINK"/>
-					<Add option="-DBOOST_SERIALIZATION_DYN_LINK"/>
-					<Add directory="/home/minkyung/CLionProjects/socket-example/include"/>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 adapter-cli/fast"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="client">
-				<Option output="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DBOOST_FILESYSTEM_DYN_LINK"/>
-					<Add option="-DBOOST_ALL_NO_LIB"/>
-					<Add option="-DBOOST_SYSTEM_DYN_LINK"/>
-					<Add option="-DBOOST_SERIALIZATION_DYN_LINK"/>
-					<Add directory="/home/minkyung/CLionProjects/socket-example/include"/>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 client"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="client/fast">
-				<Option output="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DBOOST_FILESYSTEM_DYN_LINK"/>
-					<Add option="-DBOOST_ALL_NO_LIB"/>
-					<Add option="-DBOOST_SYSTEM_DYN_LINK"/>
-					<Add option="-DBOOST_SERIALIZATION_DYN_LINK"/>
-					<Add directory="/home/minkyung/CLionProjects/socket-example/include"/>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 client/fast"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gmock">
@@ -385,56 +217,6 @@
 					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/_deps/googletest-build/googletest/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="test-simple">
-				<Option output="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple/test-simple" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/_deps/googletest-src/googlemock/include"/>
-					<Add directory="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/_deps/googletest-src/googletest/include"/>
-					<Add directory="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/_deps/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple/Makefile&quot;  VERBOSE=1 test-simple"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="test-simple/fast">
-				<Option output="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple/test-simple" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/_deps/googletest-src/googlemock/include"/>
-					<Add directory="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/_deps/googletest-src/googletest/include"/>
-					<Add directory="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/_deps/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple/Makefile&quot;  VERBOSE=1 test-simple/fast"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/minkyung/CLionProjects/socket-example/cmake-build-debug/test/simple/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 		</Build>
 		<Unit filename="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/_deps/googletest-src/googlemock/src/gmock-all.cc">
 			<Option target="gmock"/>
@@ -447,39 +229,6 @@
 		</Unit>
 		<Unit filename="/home/minkyung/CLionProjects/socket-example/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc">
 			<Option target="gtest_main"/>
-		</Unit>
-		<Unit filename="/home/minkyung/CLionProjects/socket-example/src/adapter/adapter/adapter.cpp">
-			<Option target="adapter-cli"/>
-		</Unit>
-		<Unit filename="/home/minkyung/CLionProjects/socket-example/src/adapter/adapter/adapter.hpp">
-			<Option target="adapter-cli"/>
-		</Unit>
-		<Unit filename="/home/minkyung/CLionProjects/socket-example/src/adapter/main.cpp">
-			<Option target="adapter-cli"/>
-		</Unit>
-		<Unit filename="/home/minkyung/CLionProjects/socket-example/src/adapter/model/model.cpp">
-			<Option target="adapter-cli"/>
-		</Unit>
-		<Unit filename="/home/minkyung/CLionProjects/socket-example/src/adapter/model/model.hpp">
-			<Option target="adapter-cli"/>
-		</Unit>
-		<Unit filename="/home/minkyung/CLionProjects/socket-example/src/adapter/model/model_api.cpp">
-			<Option target="adapter-cli"/>
-		</Unit>
-		<Unit filename="/home/minkyung/CLionProjects/socket-example/src/adapter/model/model_api.h">
-			<Option target="adapter-cli"/>
-		</Unit>
-		<Unit filename="/home/minkyung/CLionProjects/socket-example/src/client-sync/main.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/minkyung/CLionProjects/socket-example/test/simple/sum.cpp">
-			<Option target="test-simple"/>
-		</Unit>
-		<Unit filename="/home/minkyung/CLionProjects/socket-example/test/simple/sum.hpp">
-			<Option target="test-simple"/>
-		</Unit>
-		<Unit filename="/home/minkyung/CLionProjects/socket-example/test/simple/sum_test.cc">
-			<Option target="test-simple"/>
 		</Unit>
 		<Unit filename="/home/minkyung/CLionProjects/socket-example/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

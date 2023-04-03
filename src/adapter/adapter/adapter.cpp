@@ -14,9 +14,6 @@ bool Adapter::connect(short port) {
 	function<void(eRequestType)> req_handler = bind(&Adapter::handleRequest, this, placeholders::_1);
 	unique_ptr<Server> s = unique_ptr<Server>(new Server(io_context, port, req_handler));
 
-	// response 받을 핸들러 등록
-//	function<void(sResponseTest)> res_handler = bind
-//			registerHandle()
 	this->server = move(s);
 
 	return true;
@@ -24,6 +21,10 @@ bool Adapter::connect(short port) {
 
 bool Adapter::run(){
 	io_context.run();
+}
+
+bool Adapter::sendResponse(sResponseTest response_) {
+
 }
 
 void Adapter::handleRequest(eRequestType code) {
@@ -35,6 +36,10 @@ void Adapter::handleRequest(eRequestType code) {
 
 			cout << "request from external client: REQ_IS_STANDBY" << endl;
 			initEngine();
+
+			// engine에서 adapter로 response 받을 핸들러 등록
+			function<void(sResponseTest)> res_handler = bind(&Adapter::sendResponse, this, placeholders::_1);
+			registerNotiHandle(res_handler);
 
 			break;
 		}

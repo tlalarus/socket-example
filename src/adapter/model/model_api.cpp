@@ -19,6 +19,12 @@ bool initEngine(){
 	}
 
 	return true;
+
+	// adapter의 sendResponse 함수를 콜백등록해 놓는다.
+	sResponseTest reply;
+	reply.code = static_cast<int32_t>(eResponseType::RES_STANDBY);
+	reply.val1 = true;
+	g_engine->msg_manager.sendResponse(reply);
 }
 
 bool runEngine(){
@@ -28,10 +34,15 @@ bool runEngine(){
 	g_engine->proc(2);
 	g_engine->proc(0);
 
+	sResponseTest reply;
+	reply.code = static_cast<int32_t>(eResponseType::RES_READY);
+	reply.val1 = true;
+	g_engine->msg_manager.sendResponse(reply);
+
 	return true;
 }
 
-bool registerHandle(NotiCallbackFn pfunc){
+bool registerNotiHandle(NotiCallbackFn pfunc){
 
 	if(pfunc != nullptr){
 		g_engine->msg_manager.registerNotiCB(pfunc);

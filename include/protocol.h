@@ -21,7 +21,8 @@ typedef enum {
 
 // external client <- adapter(server/client) <- engine(server)
 typedef enum {
-	RES_READY = 0,
+	RES_STANDBY = 0,
+	RES_READY,
 	RES_RESULT,
 	RES_ERROR,
 	RES_MAX

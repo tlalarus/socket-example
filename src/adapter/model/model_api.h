@@ -9,6 +9,6 @@
 
 bool initEngine();
 bool runEngine();
-bool registerHandle(NotiCallbackFn pfunc);
+bool registerNotiHandle(NotiCallbackFn pfunc);
 
 #endif //SOCKET_MODEL_API_H
