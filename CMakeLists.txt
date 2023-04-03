@@ -1,22 +1,27 @@
 cmake_minimum_required(VERSION 3.19)
 project(socket)
 
+message("CMAKE_SOURCE: ${CMAKE_SOURCE_DIR}")
+message("CMAKE_BINARY: ${CMAKE_BINARY_DIR}")
+
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS -pthread)
 
-find_package(Threads REQUIRED)
-find_package(Boost COMPONENTS filesystem system serialization REQUIRED)
+set(BUILD_TEST ON)
+# Cmake configuration options to CMakeCache.txt
+option(BUILD_TEST "Build google-test" ON)
 
-add_library(boost_asio INTERFACE)
-add_library(boost_serialization INTERFACE)
-set_target_properties(boost_serialization PROPERTIES
-        INTERFACE_INCLUDE_DIRECTORIES "${Boost_INCLUDE_DIRS}"
-        INTERFACE_LINK_LIBRARIES "${Boost_SERIALIZATION_LIBRARIES}")
+# Process subdirectories
+#add_library(boost_asio INTERFACE)
+#add_library(boost_serialization INTERFACE)
+#set_target_properties(boost_serialization PROPERTIES
+#        INTERFACE_INCLUDE_DIRECTORIES "${Boost_INCLUDE_DIRS}"
+#        INTERFACE_LINK_LIBRARIES "${Boost_SERIALIZATION_LIBRARIES}")
 
-set(PROJECT_OUTPUT_DIR ${CMAKE_BINARY_DIR}/${CMAKE_SYSTEM_PROCESSOR})
-#set(PROJECT_INCLUDE_DIR ${PROJECT_OUTPUT_DIR}/include)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR}/bin)
+add_subdirectory(src)
 
-add_subdirectory(sync)
-add_subdirectory(async-asio)
-add_subdirectory(adapter)
+if(BUILD_TEST)
+    add_subdirectory(test)
+else()
+    message("pass test")
+endif(BUILD_TEST)
