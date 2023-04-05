@@ -48,15 +48,17 @@ int main(int argc, char* argv[]){
 			// Serialize
 			char request[max_length];
 			request[0] = req_code;
-			size_t request_length = std::strlen(request);
-			std::cout << "Request is: << " << req_code << ", request size is " << request_length << std::endl;
+			size_t req_len = std::strlen(request);
+			std::cout << "1) Request from external client to adapter: req code= "  << req_code << ", req size= " << req_len << std::endl;
+			std::string request_str = std::to_string(req_code);
 
 			boost::asio::write(s, boost::asio::buffer(request, max_length));
 
 			// Deserialize
 			char reply[max_length];
-			size_t reply_length = boost::asio::read(s, boost::asio::buffer(reply, request_length));
-			std::cout << "Reply is: ";
+			size_t reply_length = boost::asio::read(s, boost::asio::buffer(reply, req_len));
+			std::string reply_str(reply, reply_length);
+			std::cout << "2) Reply from adapter: reply size= " << reply_length << std::endl;
 			std::cout.write(reply, reply_length);
 			std::cout << "\n\n";
 		}

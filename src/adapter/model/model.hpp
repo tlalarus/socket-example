@@ -10,6 +10,8 @@
 #include <cstring>
 #include <memory>
 #include <mutex>
+#include <boost/asio.hpp>
+#include <boost/bind.hpp>
 #include "../include/protocol.h"
 
 
@@ -72,12 +74,12 @@ public:
 	Model() = default;
 	~Model() = default;
 
-	void do_something1(Engine& engine_) { std::cout << "do_something1()" << std::endl; };
-	void do_something2(Engine& engine_) { std::cout << "do_something2()" << std::endl; };
+	void do_something1(Engine& engine_, int action_code) { std::cout << "do_something1() act: " << action_code << std::endl; };
+	void do_something2(Engine& engine_, int action_code) { std::cout << "do_something2() act: " << action_code << std::endl; };
 	void notifyError(Engine& engine_);
 };
 
-//TODO
+// TODO
 // convert Thread-safe singleton object
 class Engine{
 public:
@@ -91,11 +93,13 @@ public:
 	Message msg_manager;
 
 	void proc(int action);
+
 private:
 	static Engine* instance;
-	std::unique_ptr<Model> m_model;
+	std::shared_ptr<Model> m_model;
 	Engine();
 
+	boost::asio::thread_pool pool;
 public:
 	static Engine* getInstance() {
 		if(instance == nullptr){
@@ -103,6 +107,15 @@ public:
 		}
 		return instance;
 	};
+	void postTask(std::function<void(Engine&, int)>& task, int code){
+		boost::asio::post(pool, [&](){ task(*instance, code); });
+
+		// 최초 post 를 의미하는 코드가 입력되면 pool join 해주기
+		if(code == 0){
+			std::cout << "7) Run thread pool" << std::endl;
+			pool.join(); // 리턴값이 필요하다면 future형 반환 만들기
+		}
+	}
 
 };
 

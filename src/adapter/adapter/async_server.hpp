@@ -66,29 +66,33 @@ private:
 				                        if(!ec){
 																	// simple deserialize
 																	int req_code = data_[0];
+																	int req_len = strlen(data_);
 
-																	std::cout <<"req code:" << req_code << std::endl;
+																	std::cout <<"3) Received request: code= " << req_code << ", req size= " << req_len << std::endl;
 																	// adapter callback func call
 																	// response =
 																	request_handler_func(static_cast<eRequestType>(req_code));
 
 																	// send response
+																	std::cout << "4) Send response" << std::endl;
 					                        do_write(length);
 				                        }
 		                        });
 	}
 	void do_write(std::size_t length){
-//		shared_const_buffer buffer(std::to_string(response));
+
+		std::string reply = "done";
+		shared_const_buffer buffer(reply);
 
 	// handle request
 		auto self(shared_from_this());
-//		boost::asio::async_write(socket_, buffer,
-//		                         [this, self](boost::system::error_code ec, std::size_t /*length*/)
-//		                         {
-//				                         if(!ec){
-//					                         do_read();
-//				                         }
-//		                         });
+		boost::asio::async_write(socket_, buffer,
+		                         [this, self](boost::system::error_code ec, std::size_t /*length*/)
+		                         {
+				                         if(!ec){
+					                         do_read();
+				                         }
+		                         });
 	}
 
 	tcp::socket socket_;
@@ -112,6 +116,7 @@ private:
 		acceptor_.async_accept(
 						[this](boost::system::error_code ec, tcp::socket socket){
 								if(!ec){
+									std::cout << "2) Make shared_ptr of Session and pass request handler" << std::endl;
 									std::make_shared<Session>(std::move(socket), request_handler_func)->start();
 								}
 								do_accept();

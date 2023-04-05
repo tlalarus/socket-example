@@ -24,10 +24,12 @@ Engine::Engine(){
 }
 
 void Engine::proc(int action){
-	if(action == 1){
-		m_model->do_something1(*this);
-	} else if(action == 2){
-		m_model->do_something2(*this);
+
+	cout << "8) Called Engine::proc: action code= " << action << endl;
+	if(action == 0){
+		m_model->do_something1(*this, action);
+	} else if(action == 1){
+		m_model->do_something2(*this, action);
 	} else{
 		cout << "error in Engine::proc()" << endl;
 		m_model->notifyError(*this);
