@@ -6,9 +6,12 @@
 #include <cstring>
 #include <iostream>
 #include <utility>
+#include <sstream>
 #include <boost/asio.hpp>
 #include <boost/serialization/serialization.hpp>
 #include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/text_oarchive.hpp>
 #include <boost/iostreams/device/array.hpp>
 #include <boost/iostreams/stream.hpp>
 #include <boost/serialization/map.hpp>
@@ -42,25 +45,34 @@ int main(int argc, char* argv[]){
 			std::cout << " 0:REQ_IS_STANDBY \n 1:REQ_IS_READY \n 2:REQ_IS_TRIGGERED \n 3:REQ_RESULT)" << std::endl;
 			std::cout << "Enter req code:";
 
-			int req_code = -1;
+			int32_t req_code = -1;
 			std::cin >> req_code;
 
 			// Serialize
-			char request[max_length];
-			request[0] = req_code;
-			size_t req_len = std::strlen(request);
-			std::cout << "1) Request from external client to adapter: req code= "  << req_code << ", req size= " << req_len << std::endl;
-			std::string request_str = std::to_string(req_code);
+			sRequestTest req_msg = {req_code};
+			std::stringstream ss;
+			boost::archive::text_oarchive oa{ss};
+			oa << req_msg;
 
-			boost::asio::write(s, boost::asio::buffer(request, max_length));
+			auto req_length = boost::asio::write(s, boost::asio::buffer(ss.str()));
+			std::cout << "1) Request to adapter: " << ss.str() << std::endl;
+//			std::cout << "1) Request to adapter: req code= "  << req_msg.code << ", req size= " << req_length << std::endl;
+//			boost::asio::write(s, boost::asio::buffer(request_str));
 
-			// Deserialize
-			char reply[max_length];
-			size_t reply_length = boost::asio::read(s, boost::asio::buffer(reply, req_len));
-			std::string reply_str(reply, reply_length);
-			std::cout << "2) Reply from adapter: reply size= " << reply_length << std::endl;
-			std::cout.write(reply, reply_length);
-			std::cout << "\n\n";
+			char res_arr[1024];
+			boost::asio::streambuf buf;
+			boost::system::error_code error;
+			size_t reply_length = boost::asio::read_until(s, buf, '\n', error);
+			std::string res_str(res_arr, reply_length);
+
+			std::stringstream msg_ss;
+			msg_ss.write(boost::asio::buffer_cast<const char*>(buf.data()), reply_length);
+			boost::archive::text_iarchive ia{msg_ss};
+			sResponseTest res_msg;
+			ia >> res_msg;
+
+			std::cout << "2) Reply from adapter: " << msg_ss.str() << std::endl;
+			std::cout << "2) Reply from adapter: code= " << res_msg.code << ", values= " << res_msg.val1 << " " << res_msg.val2 << " " << res_msg.val3 << std::endl;
 		}
 
 	}

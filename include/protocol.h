@@ -49,21 +49,30 @@ struct sResponseTest{
 	float val2;       // 4byte
 	float val3;       // 4byte
 
+#ifdef __cplusplus
 private:
 	friend class boost::serialization::access;
 	template <typename AR> void serialize(AR& ar, const unsigned int ver){
-		SerializeMember(ar, code, val1, val2, val3);
+		ar & code;
+		ar & val1;
+		ar & val2;
+		ar & val3;
+//		SerializeMember(ar, code, val1, val2, val3);
 	}
+#endif
 };
 
 struct sRequestTest{
 	int32_t code;     // 4byte
 
+#ifdef __cplusplus
 private:
 	friend class boost::serialization::access;
 	template <typename AR> void serialize(AR& ar, const unsigned int ver){
-		SerializeMember(ar, code);
+		ar & code;
+//		SerializeMember(ar, code);
 	}
+#endif
 };
 
 typedef struct _result {

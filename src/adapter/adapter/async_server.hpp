@@ -13,6 +13,8 @@
 #include <boost/asio.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 #include <boost/serialization/serialization.hpp>
 #include <boost/iostreams/device/array.hpp>
 #include <boost/iostreams/stream.hpp>
@@ -50,7 +52,7 @@ class Session
 {
 public:
 	Session(tcp::socket socket, std::function<void(eRequestType)> req_handler)
-					: socket_(std::move(socket)){
+					: socket_(std::move(socket)), bufs(b.prepare(1024)){
 		request_handler_func = req_handler;
 	}
 	void start(){
@@ -65,28 +67,38 @@ private:
 		                        {
 				                        if(!ec){
 																	// simple deserialize
-																	int req_code = data_[0];
-																	int req_len = strlen(data_);
+																	std::string req_str(data_, length);
+																	std::stringstream ss(req_str);
+																	boost::archive::text_iarchive ia{ss};
 
-																	std::cout <<"3) Received request: code= " << req_code << ", req size= " << req_len << std::endl;
+					                        sRequestTest req_msg;
+																	ia >> req_msg;
+
+																	std::cout <<"3) Received request: code= " << req_msg.code << ", req size= " << length << std::endl;
 																	// adapter callback func call
 																	// response =
-																	request_handler_func(static_cast<eRequestType>(req_code));
+																	request_handler_func(static_cast<eRequestType>(req_msg.code));
 
 																	// send response
-																	std::cout << "4) Send response" << std::endl;
 					                        do_write(length);
 				                        }
 		                        });
 	}
 	void do_write(std::size_t length){
 
-		std::string reply = "done";
-		shared_const_buffer buffer(reply);
+		sResponseTest res_msg = { 0, true, 2.22f, 3.33f };
+		std::stringstream ss;
+		boost::archive::text_oarchive oa{ss};
+		oa << res_msg;
+
+		ss << "\n";
+
+		std::cout << "4) Send response: " << ss.str() << std::endl;
+		shared_const_buffer res_buf(ss.str());
 
 	// handle request
 		auto self(shared_from_this());
-		boost::asio::async_write(socket_, buffer,
+		boost::asio::async_write(socket_, res_buf,
 		                         [this, self](boost::system::error_code ec, std::size_t /*length*/)
 		                         {
 				                         if(!ec){
@@ -99,7 +111,8 @@ private:
 	std::function<void(eRequestType)> request_handler_func;
 	enum {max_length = (1024*5) };
 	char data_[max_length*5];
-	boost::asio::streambuf stream_buf;
+	boost::asio::streambuf b;
+	boost::asio::streambuf::const_buffers_type bufs;
 };
 
 class Server{
