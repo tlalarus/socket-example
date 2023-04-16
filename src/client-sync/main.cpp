@@ -39,14 +39,21 @@ int main(int argc, char* argv[]){
 		tcp::resolver resolver(io_context);
 		boost::asio::connect(s, resolver.resolve(argv[1], argv[2]));
 
+		int req_cnt = 0;
+		int req_arr[3] = {0, 1, 3};
+
 		while(true){
 
 			std::cout << "Select request type" << std::endl;
-			std::cout << " 0:REQ_IS_STANDBY \n 1:REQ_IS_READY \n 2:REQ_IS_TRIGGERED \n 3:REQ_RESULT)" << std::endl;
-			std::cout << "Enter req code:";
+			std::cout << " 0:REQ_IS_STANDBY \n 1:REQ_IS_READY \n 3:REQ_RESULT)" << std::endl;
+			std::cout << "Enter to continue" << std::endl;
+			getchar();
 
-			int32_t req_code = -1;
-			std::cin >> req_code;
+			if(req_cnt > 2){
+				break;
+			}
+			int32_t req_code = req_arr[req_cnt++];
+			std::cout << "Enter req code:" << req_code << std::endl;
 
 			// Serialize
 			sRequestTest req_msg = {req_code};
@@ -73,6 +80,7 @@ int main(int argc, char* argv[]){
 
 			std::cout << "2) Reply from adapter: " << msg_ss.str() << std::endl;
 			std::cout << "2) Reply from adapter: code= " << res_msg.code << ", values= " << res_msg.val1 << " " << res_msg.val2 << " " << res_msg.val3 << std::endl;
+
 		}
 
 	}

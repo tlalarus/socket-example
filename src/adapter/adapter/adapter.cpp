@@ -38,6 +38,9 @@ void Adapter::handleRequest(eRequestType code) {
 			cout << "5) Call initEngine() and register noti handler" << endl;
 			initEngine();
 
+			//TODO
+			// 어댑터 초기화하는 함수에서 호출되게 바꾸기
+
 			// engine에서 adapter로 response 받을 핸들러 등록
 			function<void(sResponseTest)> res_handler = bind(&Adapter::sendResponse, this, placeholders::_1);
 			registerNotiHandle(res_handler);

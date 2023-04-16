@@ -10,6 +10,7 @@
 #include <cstring>
 #include <memory>
 #include <mutex>
+#include <chrono>
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
 #include "../include/protocol.h"
@@ -74,8 +75,14 @@ public:
 	Model() = default;
 	~Model() = default;
 
-	void do_something1(Engine& engine_, int action_code) { std::cout << "do_something1() act: " << action_code << std::endl; };
-	void do_something2(Engine& engine_, int action_code) { std::cout << "do_something2() act: " << action_code << std::endl; };
+	void do_something1(Engine& engine_, int action_code) {
+		std::cout << "do_something1() act: " << action_code << std::endl;
+		std::this_thread::sleep_for(std::chrono::seconds(5));
+	};
+	void do_something2(Engine& engine_, int action_code) {
+		std::cout << "do_something2() act: " << action_code << std::endl;
+		std::this_thread::sleep_for(std::chrono::seconds(3));
+	};
 	void notifyError(Engine& engine_);
 };
 
